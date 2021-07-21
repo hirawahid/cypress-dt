@@ -57,9 +57,9 @@ it('TS_03', () => {
 });
 
 it('TS_04', () => {
-   // cy.visit("https://ct.digitaltolk.se/")
-    //cy.wait(3000)
-    //cy.log('loaded')
+    cy.visit("https://ct.digitaltolk.se/")
+    cy.wait(3000)
+    cy.log('loaded')
     cy.xpath("//div[contains(@class,'home-page__banner-action-container')]/a[@href='/login']").click()
     cy.xpath("//div[contains(@class,'username')]/input[@type='text']").type('abc')
     cy.xpath("//div[contains(@class,'password')]/input[@type='password']").type('abc')
@@ -76,7 +76,11 @@ it('TS_05', () => {
     cy.xpath("//div[contains(@class,'username')]/input[@type='text']").type('hira@customer.dt')
     cy.xpath("//div[contains(@class,'password')]/input[@type='password']").type('Test123$')
     cy.xpath("//button[contains(@class,'el-button app-button-primary el-button--default login-form__login-button')]").click()
-    cy.url().should('include','/today-dashboard')
+    const username="hira@customer.dt"
+    const name = username.split("@",1);
+    const name_final=name[0].charAt(0).toUpperCase() + name[0].slice(1)
+    cy.xpath("//*[contains(text(),'"+name_final+"')]").should('be.visible')
+    //cy.url().should('include','/today-dashboard')
     
 });
 
