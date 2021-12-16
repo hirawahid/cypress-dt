@@ -4,5 +4,5 @@ Testing digitaltolk.se
 @focus
 Scenario: Page load successful
 Given I open digitaltol.se
-Then I see language button
+Then I see "Bli" button
 
